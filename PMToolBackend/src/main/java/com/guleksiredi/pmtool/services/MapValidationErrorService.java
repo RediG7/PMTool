@@ -12,6 +12,7 @@ import java.util.Map;
 @Service
 public class MapValidationErrorService {
 
+    // Checks for Valid object model, but not for duplicate... because unique constraint happens at database level
     public ResponseEntity<?> MapValidationService(BindingResult result) {
         if (result.hasErrors()) {
 
