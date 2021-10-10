@@ -39,4 +39,10 @@ public class ProjectController {
 
         return new ResponseEntity<Project>(project, HttpStatus.OK);
     }
+
+    // No need for validation or exception handling because if we don't have any projects we will get an empty array/list.
+    @GetMapping("/all")
+    public Iterable<Project> getAllProjects() {
+        return projectService.findAllProjects();
+    }
 }
