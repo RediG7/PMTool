@@ -13,7 +13,7 @@ class ProjectItem extends Component {
               <h3>Spring / React Project</h3>
               <p>Project to create with Spring Boot and React</p>
             </div>
-            <div className="col-md-4 d-none d-lg-block">
+            <div className="col-md-4 d-lg-block">
               <ul className="list-group">
                 <a href="#">
                   <li className="list-group-item board">
