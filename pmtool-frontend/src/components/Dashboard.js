@@ -4,11 +4,21 @@ import ProjectItem from "./Project/ProjectItem";
 class Dashboard extends Component {
   render() {
     return (
-      <div>
-        <h1 className="alert alert-warning">Welcome to the dashboard</h1>
-        <ProjectItem />
-        <ProjectItem />
-        <ProjectItem />
+      <div className="projects">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <h1 className="display-4 text-center">Projects</h1>
+              <br />
+              <a href="" className="btn btn-lg btn-dark">
+                Create a Project
+              </a>
+              <br />
+              <hr />
+              <ProjectItem />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
