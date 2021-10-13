@@ -13,10 +13,20 @@ class AddProject extends Component {
       description: "",
       start_date: "",
       end_date: "",
+      errors: {},
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  // life cycle hook -> deprecated
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors,
+      });
+    }
   }
 
   onChange(e) {
@@ -34,10 +44,12 @@ class AddProject extends Component {
       end_date: this.state.end_date,
     };
 
-    this.props.createProject(newProject, this.props.history)
+    this.props.createProject(newProject, this.props.history);
   }
 
   render() {
+    const { errors } = this.state;
+
     return (
       <div className="project">
         <div className="container">
@@ -57,6 +69,7 @@ class AddProject extends Component {
                     value={this.state.projectName}
                     onChange={this.onChange}
                   />
+                  <p>{errors.projectName}</p>
                 </div>
                 <div className="form-group">
                   <input
@@ -67,6 +80,7 @@ class AddProject extends Component {
                     value={this.state.projectIdentifier}
                     onChange={this.onChange}
                   />
+                  <p>{errors.projectIdentifier}</p>
                 </div>
 
                 <div className="form-group">
@@ -77,6 +91,7 @@ class AddProject extends Component {
                     value={this.state.description}
                     onChange={this.onChange}
                   ></textarea>
+                  <p>{errors.description}</p>
                 </div>
                 <h6>Start Date</h6>
                 <div className="form-group">
@@ -113,8 +128,13 @@ class AddProject extends Component {
   }
 }
 
-AddProject.propTypes ={
-  createProject : PropTypes.func.isRequired // like a constraint, we need this func here for the component to work
-}
+const mapStateToProps = (state) => ({
+  errors: state.errors,
+});
 
-export default connect(null, { createProject })(AddProject);
+AddProject.propTypes = {
+  createProject: PropTypes.func.isRequired, // like a constraint, we need this func here for the component to work
+  errors: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps, { createProject })(AddProject);
