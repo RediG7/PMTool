@@ -74,8 +74,7 @@ class AddProject extends Component {
                   />
                   {errors.projectName ? (
                     <div className="invalid-feedback">
-                      {errors.projectName}
-                      <p></p>
+                      <p>{errors.projectName}</p>
                     </div>
                   ) : (
                     <p></p>
@@ -94,8 +93,7 @@ class AddProject extends Component {
                   />
                   {errors.projectIdentifier ? (
                     <div className="invalid-feedback">
-                      {errors.projectIdentifier}
-                      <p></p>
+                      <p>{errors.projectIdentifier}</p>
                     </div>
                   ) : (
                     <p></p>
@@ -114,8 +112,7 @@ class AddProject extends Component {
                   ></textarea>
                   {errors.description ? (
                     <div className="invalid-feedback">
-                      {errors.description}
-                      <p></p>
+                      <p>{errors.description}</p>
                     </div>
                   ) : (
                     <p></p>
